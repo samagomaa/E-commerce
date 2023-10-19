@@ -20,7 +20,7 @@ export default function Categories() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
 }
 
-  let { data , isLoading } = useQuery("CategoriesProducts" , allCategories )
+  let { data } = useQuery("CategoriesProducts" , allCategories )
 
 
   
