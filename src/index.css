@@ -11,3 +11,67 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main-color{
+  color: #4fa74f;
+}
+.sub-color{
+  color: #22db14;
+}
+
+.main-bg-color{
+  background-color:#4fa74f;
+}
+.addParent{
+  position: relative;
+  box-shadow: none;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.heartPosition{
+  position: absolute;
+  top: 94%;
+  left: 85%;
+}
+
+button.addHover{
+  position: absolute;
+  left: 5%;
+  top: 100%;
+  transition: all 0.5s;
+}
+
+.addParent:hover button.addHover{
+  top: 90%;
+}
+
+.addParent:hover{
+  box-shadow: 0px 0px 15px #4fa74f;
+}
+
+button.addColorChange{
+  color: #4fa74f;
+  transition: all 0.5s;
+}
+button.addColorChange:hover{
+  color: #459345;
+}
+
+
+a , a:hover {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+.rating-color{
+  color:#FDCC0D;
+}
+
+.btnFocus { 
+  border: none !important;
+} 
+
+.textChange:hover{
+  color: #459345 ;
+  transition: all 0.6s;
+}
