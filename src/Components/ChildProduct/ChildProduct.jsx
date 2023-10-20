@@ -94,6 +94,7 @@ export default function ChildProduct(props) {
     }
     else{
       toast.error("Error in adding" , {
+        position: "top-right",
         duration: 4000,
         style: {
           padding: '30px',

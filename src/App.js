@@ -9,7 +9,6 @@ import Register from './Components/Register/Register';
 import Notfound from './Components/Notfound/Notfound';
 import Brands from './Components/Brands/Brands';
 import Categories from './Components/Categories/Categories';
-import CounterContextProvider from './Context/CounterContext';
 import  {UserContext} from './Context/UserContext'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
@@ -53,16 +52,14 @@ export default function App() {
     if(localStorage.getItem("userToken") !== null){
       setUserToken(localStorage.getItem("userToken"))
     }
-  } , [])
+  } , [setUserToken])
 
   return <PasswordContextProvider>
   <CartContextProvider>
     <OrderContextProvider>
     <WishlistProvider>
-  <CounterContextProvider>
     <RouterProvider router={routers}></RouterProvider>
     <Toaster/>
-  </CounterContextProvider>
   </WishlistProvider>
   </OrderContextProvider>
   </CartContextProvider>

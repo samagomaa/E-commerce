@@ -27,7 +27,7 @@ export default function ShowSubCategories(props) {
 />
   </div>
 : 
-<div>
+<div className='mb-5'>
   <h2 className='py-4 d-flex justify-content-center main-color'> {props.cate} subcategories</h2>
 <div className="row g-3">
     {data?.data.data.map((sub)=>
