@@ -8,7 +8,7 @@ export default function Layout() {
   return <>
   <Navbar/>
   <div className="container overflow-hidden">
-  <Outlet></Outlet>
+  <Outlet/>
   </div>
   <Footer/>
   </>

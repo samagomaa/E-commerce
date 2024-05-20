@@ -34,7 +34,7 @@ export default function Register() {
     )
     if(data.message === 'success'){
       setisloading(false);
-      navigate("/login");
+      navigate("/");
     }
   }
   

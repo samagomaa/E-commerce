@@ -26,14 +26,13 @@ export default function Cart() {
     }
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function getCart() {
     let {data} = await getLoggedUserCart()
     setCartDetails(data)
     console.log(data);
   }
   
-  useEffect(()=> {getCart()} , [getCart])
+  useEffect(()=> {getCart()} , [])
 
   return <>
   <Helmet>

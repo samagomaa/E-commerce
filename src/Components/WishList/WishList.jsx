@@ -52,7 +52,7 @@ export default function WishList() {
     setListDetails(data);
   }
   console.log( "user get wish list",ListDetails?.data);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   useEffect(()=> getList() , [])
 
 

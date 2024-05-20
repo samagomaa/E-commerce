@@ -28,37 +28,79 @@ import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 
 
-let routers = createBrowserRouter([
-  {path:"/" , element:<Layout/> , children: [
-    {index: true , element: <ProtectedRoute> <Home/> </ProtectedRoute> },
-    {path:'Brands' , element:<ProtectedRoute> <Brands/> </ProtectedRoute> },
-    {path:'Cart' , element:<ProtectedRoute> <Cart/> </ProtectedRoute> },
-    {path:'Products' , element:<ProtectedRoute> <Products/> </ProtectedRoute>},
-    {path:'productDetails/:id' , element:<ProtectedRoute> <ProductDetails/> </ProtectedRoute>},
-    {path:'Categories' , element:<ProtectedRoute> <Categories/> </ProtectedRoute> },
-    {path:'WishList' , element:<ProtectedRoute> <WishList/> </ProtectedRoute> },
-    {path:'Checkout' , element:<ProtectedRoute> <Checkout/> </ProtectedRoute> },
-    {path:'allorders' , element:<ProtectedRoute> <Orders/> </ProtectedRoute> },
-    {path:'register' , element:<Register/>},
-    {path:'Forgetpassword' , element:<Forgetpassword/>},
-    {path:'ResetPassword' , element:<ResetPassword/>},
-    {path:'login' , element:<Login/>},
-    {path:'*' , element:<Notfound/>},
-  ]}
-])
+// let routers = createBrowserRouter([
+//   {path:"/" , element:<Layout/> , children: [
+//     {index: true , element: <ProtectedRoute> <Home/> </ProtectedRoute> },
+//     {path:'Brands' , element:<ProtectedRoute> <Brands/> </ProtectedRoute> },
+//     {path:'Cart' , element:<ProtectedRoute> <Cart/> </ProtectedRoute> },
+//     {path:'Products' , element:<ProtectedRoute> <Products/> </ProtectedRoute>},
+//     {path:'productDetails/:id' , element:<ProtectedRoute> <ProductDetails/> </ProtectedRoute>},
+//     {path:'Categories' , element:<ProtectedRoute> <Categories/> </ProtectedRoute> },
+//     {path:'WishList' , element:<ProtectedRoute> <WishList/> </ProtectedRoute> },
+//     {path:'Checkout' , element:<ProtectedRoute> <Checkout/> </ProtectedRoute> },
+//     {path:'allorders' , element:<ProtectedRoute> <Orders/> </ProtectedRoute> },
+//     {path:'register' , element:<Register/>},
+//     {path:'Forgetpassword' , element:<Forgetpassword/>},
+//     {path:'ResetPassword' , element:<ResetPassword/>},
+//     {path:'login' , element:<Login/>},
+//     {path:'*' , element:<Notfound/>},
+//   ]}
+// ])
 export default function App() {
   let {setUserToken} = useContext(UserContext)
   useEffect(()=>{
     if(localStorage.getItem("userToken") !== null){
       setUserToken(localStorage.getItem("userToken"))
     }
-  } , [setUserToken])
+  } , [])
+
+  // Define index routes
+  const indexRoutes = [
+    { path: '', element: <Layout /> },
+  ];
+
+  // Define authenticated routes
+  const authenticatedRoutes = [
+        { index: true, element: <ProtectedRoute><Home /></ProtectedRoute> },
+        { path: 'Brands', element: <ProtectedRoute><Brands /></ProtectedRoute> },
+        { path: 'Cart', element: <ProtectedRoute><Cart /></ProtectedRoute> },
+        { path: 'Products', element: <ProtectedRoute><Products /></ProtectedRoute> },
+        { path: 'productDetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
+        { path: 'Categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
+        { path: 'WishList', element: <ProtectedRoute><WishList /></ProtectedRoute> },
+        { path: 'Checkout', element: <ProtectedRoute><Checkout /></ProtectedRoute> },
+        { path: 'allorders', element: <ProtectedRoute><Orders /></ProtectedRoute> },
+        { path: '*', element: <Notfound /> },
+    
+  ];
+
+  // Define authentication routes
+  const authenticationRoutes = [
+    { index: true, element: <Login/> },
+    { path: 'register', element: <Register /> },
+    { path: 'Forgetpassword', element: <Forgetpassword /> },
+    { path: 'ResetPassword', element: <ResetPassword /> },
+    { path: '*', element: <Notfound /> },
+  ];
+
+  // Choose the appropriate routes based on authentication
+  const selectedRoutes = localStorage.getItem('userToken') !== null ? authenticatedRoutes : authenticationRoutes;
+
+  // Create the router
+  const mainRouter = createBrowserRouter([
+    ...indexRoutes,
+    {
+      path: '',
+      element: <Layout />,
+      children: selectedRoutes
+    }
+  ]);
 
   return <PasswordContextProvider>
   <CartContextProvider>
     <OrderContextProvider>
     <WishlistProvider>
-    <RouterProvider router={routers}></RouterProvider>
+    <RouterProvider router={mainRouter}></RouterProvider>
     <Toaster/>
   </WishlistProvider>
   </OrderContextProvider>
