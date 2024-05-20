@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/E-commerce/static/css/main.ce30508c.css",
+    "main.js": "/E-commerce/static/js/main.b9402725.js",
+    "static/js/787.041acc40.chunk.js": "/E-commerce/static/js/787.041acc40.chunk.js",
+    "static/media/fa-solid-900.ttf": "/E-commerce/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
+    "static/media/fa-brands-400.ttf": "/E-commerce/static/media/fa-brands-400.016b4a6cdced82ab3aa1.ttf",
+    "static/media/fa-solid-900.woff2": "/E-commerce/static/media/fa-solid-900.b6879d41b0852f01ed5b.woff2",
+    "static/media/fa-brands-400.woff2": "/E-commerce/static/media/fa-brands-400.878f31251d960bd6266f.woff2",
+    "static/media/fa-regular-400.ttf": "/E-commerce/static/media/fa-regular-400.50701fbb8177c2dde530.ttf",
+    "static/media/fa-regular-400.woff2": "/E-commerce/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
+    "static/media/XCM_Manual_1533480_5305769_379x304_1X._SY304_CB616236518_.jpg": "/E-commerce/static/media/XCM_Manual_1533480_5305769_379x304_1X._SY304_CB616236518_.96a08320f0007d30af67.jpg",
+    "static/media/XCM_Manual_1396328_4379574_Egypt_EG_BAU_GW_DC_SL_Jewelry_379x304_1X._SY304_CB650636675_.jpg": "/E-commerce/static/media/XCM_Manual_1396328_4379574_Egypt_EG_BAU_GW_DC_SL_Jewelry_379x304_1X._SY304_CB650636675_.d97d01f6b579324b1cd6.jpg",
+    "static/media/XCM_Manual_1396328_4379575_Egypt_EG_BAU_GW_DC_SL_Bags_Wallets_379x304_1X._SY304_CB650636675_.jpg": "/E-commerce/static/media/XCM_Manual_1396328_4379575_Egypt_EG_BAU_GW_DC_SL_Bags_Wallets_379x304_1X._SY304_CB650636675_.941f444ea4800c7f2e40.jpg",
+    "static/media/fa-v4compatibility.ttf": "/E-commerce/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
+    "static/media/fa-v4compatibility.woff2": "/E-commerce/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
+    "static/media/slick.svg": "/E-commerce/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/E-commerce/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/E-commerce/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/E-commerce/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/E-commerce/index.html",
+    "main.ce30508c.css.map": "/E-commerce/static/css/main.ce30508c.css.map",
+    "main.b9402725.js.map": "/E-commerce/static/js/main.b9402725.js.map",
+    "787.041acc40.chunk.js.map": "/E-commerce/static/js/787.041acc40.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce30508c.css",
+    "static/js/main.b9402725.js"
+  ]
+}
