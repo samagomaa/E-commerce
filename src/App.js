@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import {RouterProvider,  createHashRouter} from "react-router-dom";
 import Layout from './Components/Layout/Layout';
 import Home from './Components/Home/Home';
 import Cart from './Components/Cart/Cart';
@@ -68,7 +68,7 @@ export default function App() {
   const selectedRoutes = localStorage.getItem('userToken') !== null ? authenticatedRoutes : authenticationRoutes;
 
   // Create the router
-  const mainRouter = createBrowserRouter([
+  const mainRouter =  createHashRouter([
     ...indexRoutes,
     {
       path: '',
