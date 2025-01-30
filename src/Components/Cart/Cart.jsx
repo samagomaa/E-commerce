@@ -38,7 +38,7 @@ export default function Cart() {
   <Helmet>
       <title>Cart</title>
   </Helmet>
-  {CartDetails? <div className='w-100 mx-auto my-5 py-4 bg-body-tertiary container'>
+  {CartDetails? <div className='w-100 vh-100 mx-auto my-5 py-4 bg-body-tertiary container'>
     <div className='mx-5'>
       <div className='d-flex justify-content-between py-3'>
         <span><h3 className='fw-bold main-color'>Cart Shop</h3></span>
@@ -80,7 +80,7 @@ export default function Cart() {
       <button onClick={()=>clearItems()} className='btn btn-outline-success shadow-none fs-4'>Clear Your Cart</button>
     </div>
   </div> :
-  <div className='w-100 mx-auto my-5 py-4 bg-body-tertiary container'>
+  <div className='w-100 vh-100 mx-auto my-5 py-4 bg-body-tertiary container'>
   <div className='mx-5'>
       <h2 className='fw-bold main-color py-3'>Cart Shop</h2>
       <h3 className='main-color'> Your Cart is Empty </h3>

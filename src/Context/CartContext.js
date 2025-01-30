@@ -9,40 +9,46 @@ export let CartContext = createContext()
 
 function addToCart(id) {
     return axios.post(`https://ecommerce.routemisr.com/api/v1/cart` ,{productId : id},{headers})
-    .then((response)=> response)
     .catch((error)=> error)
+    .then((response)=> response)
+    
 }
 
 function getLoggedUserCart(){
     return axios.get(`https://ecommerce.routemisr.com/api/v1/cart` , {headers})
-    .then((response)=>response)
     .catch((error)=> error)
+    .then((response)=>response)
+    
 }
 
 function removeProduct(productid){
     return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productid}`, {headers})
-    .then((response)=>response)
     .catch((error)=>error)
+    .then((response)=>response)
+    
 }
 
 function updateCartCount(id , count) {
     return axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${id}` , {count} , {headers})
-    .then((response)=>response)
     .catch((error)=>error)
+    .then((response)=>response)
+    
 }
 
 function clearCart () {
     return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart` , {headers})
-    .then((response)=>response)
     .catch((error)=>error)
+    .then((response)=>response)
+    
 }
 
 function onlinePayment(cartID , url , values) {
     return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartID}?url=${url}` , {
         shippingAddress : values
     } , {headers})
-    .then((response)=>response)
     .catch((error)=>error)
+    .then((response)=>response)
+    
 }
 export default function CartContextProvider(props) {
     const [cartid , setCartID] = useState(null)

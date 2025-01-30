@@ -50,12 +50,14 @@ export default function Register() {
     onSubmit:submitRegister
   })
   return <>
-    <Helmet>
-                <title>Register</title>
-            </Helmet>
+    <Helmet><title>Register</title></Helmet>
   
-  <div className='py-5 mx-auto w-100'>
-  <h2 className='py-3'>register now</h2>
+    <div className='d-flex align-items-center justify-content-center py-5'>
+    <div className='d-flex flex-column justify-content-center bg-body-tertiary bg-opacity-75 w-75 p-4 rounded-4'>
+      <div className='d-flex justify-content-center pb-4'>
+      <h2 className='fw-bold'>Sign up</h2>
+      </div>
+
   <form onSubmit={formik.handleSubmit}>
     {error?<div className='alert alert-dange'>{error}</div>:""}
     <label htmlFor="namef">Name :</label>
@@ -66,7 +68,7 @@ export default function Register() {
     {formik.errors.email && formik.touched.email ? <div className='alert alert-danger py-2 my-2 text-danger py-3'>{formik.errors.email}</div> : ''}
     <label htmlFor="passwordf">password :</label>
     <input id='passwordf' className='form-control mb-3' type="password" name='password' value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
-    {formik.errors.password && formik.touched.password ? <div className='alert alert-danger py-2 my-2 text-danger py-3'>{formik.errors.password}</div> : ''}
+    {formik.errors.password && formik.touched.password ? <div className='alert alert-danger py-2 my-2 text-danger py-3'>{formik.errors.password}</div>: ''}
     <label htmlFor="rePasswordf">rePassword :</label>
     <input id='rePasswordf' className='form-control mb-3' type="password" name='rePassword' value={formik.values.rePassword} onChange={formik.handleChange} onBlur={formik.handleBlur} />
     {formik.errors.rePassword && formik.touched.rePassword ? <div className='alert alert-danger py-2 my-2 text-danger py-3'>{formik.errors.rePassword}</div> : ''}
@@ -83,8 +85,9 @@ export default function Register() {
       wrapperClass=""
       visible={true}
 />
-    </button>: <button disabled = {!(formik.isValid && formik.dirty)} className='btn btn-outline-secondary my-3 fs-4 float-end mb-5' type='submit'>Register now</button>} 
+    </button>: <button disabled = {!(formik.isValid && formik.dirty)} className='btn btn-outline-secondary fs-5 w-100' type='submit'>Sign up</button>} 
   </form>
+  </div>
   </div>
   
   </>

@@ -57,9 +57,8 @@ export default function WishList() {
 
 
   return <>
-  <Helmet>
-                <title>WishList</title>
-            </Helmet>
+  <Helmet><title>WishList</title></Helmet>
+
   {ListDetails? <div className='w-100 mx-auto my-5 py-4 bg-body-tertiary container'>
     <div className='mx-5'>
       <div className='d-flex justify-content-between py-3'>

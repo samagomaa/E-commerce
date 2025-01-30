@@ -1,1 +1,9 @@
-.Footer {}
+.footer_subtitle{
+    font-size: 18px;
+}
+.footer_social{
+    font-size: 15px;
+}
+.dark_gray_text{
+    color: #495057;
+}

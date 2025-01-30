@@ -13,7 +13,7 @@ export default function OrderContextProvider(props) {
     }
 
 
-    return <OrderContext.Provider values={{getUserOrders}}>
+    return <OrderContext.Provider value={{getUserOrders}}>
         {props.children}
     </OrderContext.Provider>
 }
