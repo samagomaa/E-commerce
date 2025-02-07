@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './Navbar.module.css'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { useQuery } from 'react-query'
 
@@ -9,19 +9,21 @@ import axios from 'axios'
 export default function Navbar() {
   let {userToken , setUserToken} = useContext(UserContext)
   let  headers = { token: userToken} 
+  let navigate = useNavigate()
 
   async function getCart() {
     if(userToken){
       return  axios.get(`https://ecommerce.routemisr.com/api/v1/cart` , {headers})
     }
   }
-  
+
   let {data} = useQuery("Countitems" , getCart )
   
   function logOut(){
     localStorage.removeItem("userToken");
     setUserToken(null);
-    <Navigate to={"/"} />
+    console.log("usertoken",userToken);
+    navigate("/");
   }
   return <>
   <nav className="navbar navbar-expand-lg bg-body-tertiary">

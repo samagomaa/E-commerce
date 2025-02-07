@@ -53,7 +53,7 @@ export default function ChildProduct(props) {
           icon: "✔️",
         });
       } else {
-        toast.error("Error in adding");
+        toast.error("Please reload the page");
       }
     }
   }
@@ -72,7 +72,7 @@ export default function ChildProduct(props) {
         icon: "✔️",
       });
     } else {
-      toast.error("Error in adding", {
+      toast.error("Please reload the page", {
         position: "top-right",
         duration: 4000,
         style: {
