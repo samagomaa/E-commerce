@@ -15,14 +15,51 @@ export default function SliderCategories() {
 }
 
   let { data } = useQuery("CategoriesProducts" , allCategories )
-  console.log(data?.data);
+
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 1000,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          speed: 500,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1000,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1000,
+        }
+      }
+    ]
   }
 
 
@@ -30,8 +67,8 @@ export default function SliderCategories() {
   <div className='py-5'> 
   <Slider {...settings}>
         {data?.data.data.map((e)=>
-        <div>
-        <img key={e._id} height={200} src={e.image} className='w-100' alt={data?.data.data.name} />
+        <div key={e._id}>
+        <img key={e._id} height={200} src={e?.image} className='w-100' alt={data?.data.data.name} />
         <h4 className='main-color' >{e.name}</h4>
         </div>
         

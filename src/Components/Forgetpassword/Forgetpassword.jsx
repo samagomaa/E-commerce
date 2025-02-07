@@ -56,12 +56,12 @@ let [errs , setErrs] = useState("")
 
 
   return <>
-    <Helmet>
-                <title> Forgetpassword</title>
-            </Helmet>
-  <div id='forgetPassword' className='my-4'>
-  <form onSubmit={formik.handleSubmit} >
-    <h2>please enter your verification code</h2>
+    <Helmet><title> Forgetpassword</title></Helmet>
+  <div id='forgetPassword' className='vh-100 d-flex justify-content-center align-items-center'>
+  <form onSubmit={formik.handleSubmit} className='w-75'>
+    <div>
+    <h4>Please enter your verification Email</h4>
+    </div>
   <div className="form-floating mb-3">
   <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} name='email' type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
   <label htmlFor="floatingInput">Email </label>
@@ -69,10 +69,13 @@ let [errs , setErrs] = useState("")
   <button disabled = {!(formik.isValid && formik.dirty)} type='submit' className='btn btn-outline-success my-3 fs-5'>verify</button>
 </div>
   </form>
+
   </div>
-  <div id='resetPassword' className='my-4 d-none'>
-  <form onSubmit={resetFormik.handleSubmit} >
-    <h2>reset your account password</h2>
+  <div id='resetPassword' className='vh-100 d-flex justify-content-center align-items-center d-none'>
+  <form onSubmit={resetFormik.handleSubmit} className='w-75' >
+    <div>
+    <h4>Reset your account password</h4>
+    </div>
   <div className="form-floating mb-3">
   <input onBlur={resetFormik.handleBlur} onChange={resetFormik.handleChange} value={resetFormik.values.name} name='resetCode' type="text" className="form-control" id="floatingInput" placeholder="111111" />
   <label htmlFor="floatingInput">code </label>

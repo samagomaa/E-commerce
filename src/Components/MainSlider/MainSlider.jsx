@@ -9,27 +9,33 @@ import blog2 from '../../Assets/images/XCM_Manual_1533480_5305769_379x304_1X._SY
 
 export default function MainSlider() {
   const settings = {
-    dots: true,
     arrows : false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1, 
+    autoplay: true,
+    autoplaySpeed: 2500
   };
   return <>
-  <div className='row gx-0 w-50 mx-auto align-items-center py-4'>
-      <div className="col-md-6">
+  <div className="container">
+  <div className='row gx-0 w-50 mx-auto py-4'>
+      <div className="col-md-6 col-sm-6">
       <Slider {...settings}>
         <img  className='w-100' src={slide1} alt="img1"  />
         <img  className='w-100' src={slide2} alt="img2"  />
         <img  className='w-100' src={slide3} alt="img3"  />
       </Slider>
       </div>
-      <div className="col-md-6">
+      <div className="col-md-6 col-sm-6">
+        <div className='d-flex flex-column'>
         <img className='w-100' src={blog1} alt="img4" />
         <img className='w-100' src={blog2} alt="img5" />
+        </div>
       </div>
     </div>
+  </div>
+  
     
   </>
 }

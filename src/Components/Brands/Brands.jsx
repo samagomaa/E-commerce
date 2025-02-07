@@ -8,11 +8,6 @@ import { Oval } from 'react-loader-spinner';
 export default function Brands() {
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // function brandNotification(name){
-  //   console.log(name);
-    
-  // }
-
   function getBrands(){
     return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
   }
