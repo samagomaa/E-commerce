@@ -21,7 +21,7 @@ export default function Navbar() {
   function logOut(){
     localStorage.removeItem("userToken");
     setUserToken(null);
-    <Navigate to={"/login"} />
+    <Navigate to={"/"} />
   }
   return <>
   <nav className="navbar navbar-expand-lg bg-body-tertiary">
