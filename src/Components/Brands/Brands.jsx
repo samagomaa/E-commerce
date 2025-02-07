@@ -36,9 +36,8 @@ wrapperStyle={{}}
 wrapperClass=""
   />
   </div>
-  : ""  }
-
-      {data?.data.data.map((brand)=>
+  : <>
+  {data?.data.data.map((brand)=>
       <div key={brand._id} onClick={()=>setSelectedItem(brand)} className="col-md-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <div className='border rounded py-3 addParent'>
         <img key={brand._id} className='w-100' src={brand.image} alt={brand.name} />
@@ -46,6 +45,7 @@ wrapperClass=""
         </div>
       </div>
       )}
+  </>  }
     </div>
 
     {/* modal */}

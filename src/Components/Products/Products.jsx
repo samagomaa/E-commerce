@@ -47,7 +47,7 @@ export default function Products() {
       <div className=' bg-body-tertiary rounded-5 w-75 h-50 d-flex justify-content-center align-items-center'>
         <h3 className=''>Oops something bad might happen please reload the page</h3>
       </div>
-    </div> : ""}
+    </div> : <>
     {isloading?<div className='vh-100 d-flex justify-content-center align-items-center'>
       <Oval
   visible={true}
@@ -58,13 +58,15 @@ export default function Products() {
   wrapperStyle={{}}
   wrapperClass=""
     />
-    </div>: ""}
+    </div>: <>
     {productList.length > 0 ? productList.map((product)=><ChildProduct key={product._id} productDetails={product}/>) 
     : <div className='vh-100 d-flex justify-content-center align-items-center'>
     <div className=' bg-body-tertiary rounded-5 w-75 h-50 d-flex justify-content-center align-items-center'>
       <h3 className=''>No matching products found</h3>
     </div>
   </div>}
+    </>}
+    </>}
   </div>
   </div>
   

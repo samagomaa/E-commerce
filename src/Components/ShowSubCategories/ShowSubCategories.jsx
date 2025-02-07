@@ -11,7 +11,6 @@ export default function ShowSubCategories(props) {
   }
 
   let {data , isLoading} = useQuery("SuCategory" , getSubCate)
-  console.log(data?.data);
 
   return <>
   {isLoading? 
@@ -26,7 +25,7 @@ export default function ShowSubCategories(props) {
   visible={true}
 />
   </div>
-: 
+: <>
 <div className='mb-5'>
   <h2 className='py-4 d-flex justify-content-center main-color'> {props.cate} subcategories</h2>
 <div className="row g-3">
@@ -38,7 +37,7 @@ export default function ShowSubCategories(props) {
     </div>)}
   </div>
 </div>
-    } 
+</>} 
   
   </>
 }

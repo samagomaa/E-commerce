@@ -34,7 +34,7 @@ export default function Categories() {
     <div className=' bg-body-tertiary rounded-5 w-75 h-50 d-flex justify-content-center align-items-center'>
       <h3 className=''>Oops something bad might happen please reload the page</h3>
     </div>
-  </div> : ""}
+  </div> : <>
   {isLoading?<div className='vh-100 d-flex justify-content-center align-items-center'>
     <Oval
 visible={true}
@@ -46,9 +46,8 @@ wrapperStyle={{}}
 wrapperClass=""
   />
   </div>
-  : ""  }
-  
-    {data?.data.data.map((category)=> 
+  : <>
+  {data?.data.data.map((category)=> 
     <div key={category._id} className="col-md-4" onClick={()=>showSubCategory(category._id , category.name )}>
       <div className='border rounded addParent'>
         <div>
@@ -60,6 +59,9 @@ wrapperClass=""
       </div>
     </div>
     )}
+  </> }
+  </>}
+  
   </div>
   {showSub? <ShowSubCategories key={SubID}  id={SubID} cate={CateName} /> :"" }
   </>

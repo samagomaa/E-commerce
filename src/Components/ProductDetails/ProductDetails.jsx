@@ -11,73 +11,61 @@ import { Helmet } from 'react-helmet'
 
 
 export default function ProductDetails() {
-
+  let params = useParams()
   let {addToWishList , deleteUserWish ,  getUserWish} = useContext(wishContext)
-  let [HeartColor , setHeartColor] = useState("green")
+  let [isInWishlist, setIsInWishlist] = useState(false)
+  let {addToCart} = useContext(CartContext)
 
+  function getProductDetails(id){
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
+  }
 
-  async function  getUserWishList(id) {
+  let { data } = useQuery(['productDetails', params.id], () => getProductDetails(params.id), {
+    enabled: !!params.id,
+    onSuccess: () => checkWishList(params.id), // Runs only after data is fetched
+  });
+
+  async function  checkWishList(id) {
     let {data} = await getUserWish()
-    let response = data.data.filter((e)=> e._id.includes(id))
-    if(response.length === 0){
-      setHeartColor("red")
-      addWishList(id)
-    }
-    else{
-      setHeartColor("green")
-      deleteItemWish(id)
-    }
-  }
-  
-  function checkList(id){
-    getUserWishList(id)
+    let found = data?.data?.some((item) => item._id === id);
+    setIsInWishlist(found);
   }
 
-  async function addWishList(id){
-    let response = await addToWishList(id)
-    if(response?.data.status === 'success' ){
-      toast.success("it has been successfully added.❤️",
-      {
-        position: "top-right",
-        duration: 4000,
-        style: {
-          padding: '30px',
-          color:'#fff',
-          backgroundColor: "#4fa74f"
-        },
-        icon: '✔️'
-      })
-    }
-    else{
-      toast.error("Error in adding")
-    }
-  }
-
-  async function deleteItemWish(id){
-    let response = await deleteUserWish(id)
-    if(response?.data.status === 'success' ){
-      toast.success("Product removed from wishlist",
-      {
-        position: "top-right",
-        duration: 4000,
-        style: {
-          padding: '30px',
-          color:'#fff',
-          backgroundColor: "red"
-        },
-        icon: '✔️'
-      })
-    }
-    else{
-      toast.error("Error in removing" , {
-        duration: 4000,
-        style: {
-          padding: '30px',
-          color:'#fff',
-          backgroundColor: 'red'
-        },
-        icon:'❌'
-      })
+  async function toggleWishlist(id) {
+    if (isInWishlist) {
+      let response = await deleteUserWish(id);
+      if (response?.data.status === "success") {
+        setIsInWishlist(false);
+        toast.success("Product removed from wishlist", {
+          position: "top-right",
+          duration: 4000,
+          style: {
+            padding: "10px",
+            color: "#fff",
+            backgroundColor: "red",
+          },
+          icon: "❌",
+        });
+      } else {
+        toast.error("Error in removing");
+      }
+    } else {
+      let response = await addToWishList(id);
+      if (response?.data.status === "success") {
+        setIsInWishlist(true);
+        toast.success("Added to wishlist ❤️", {
+          position: "top-right",
+          duration: 4000,
+          style: {
+            padding: "10px",
+            color: "#fff",
+            backgroundColor: "#4fa74f",
+          },
+          icon: "✔️",
+        });
+      } else {
+        toast.error("Please reload the page");
+      }
     }
   }
 
@@ -89,9 +77,9 @@ export default function ProductDetails() {
     arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   }
-
-  let {addToCart} = useContext(CartContext)
 
   async function addProductToCart(id){
     let response = await addToCart(id)
@@ -111,25 +99,19 @@ export default function ProductDetails() {
     }
   }
 
-  let params = useParams()
-
-  function getProductDetails(id){
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
-  }
-
-  let {data} = useQuery('producrDetials' , ()=> getProductDetails(params.id) )
-
   return <>
-  {data?.data.data? <div className='row align-items-center py-4 mb-5'>
+  {data?.data.data? <div className='row vh-100 align-items-center py-4'>
           <Helmet>
             <title>{data?.data.data.title}</title>
           </Helmet>
     <div className='col-md-4 col-sm-12 '>
+      <div className='p-4'>
       <Slider {...settings}>
         {data?.data.data.images.map((pro)=>
         <img key={params.id} src={pro} className='w-100' alt={data?.data.data.title} />
         )}
       </Slider>
+      </div>
     </div>
     <div className='col-md-8 col-sm-12'>
     <h3 className='main-color' >{data?.data.data.title.split(" ").slice(0 , 2 ).join(" ")}</h3>
@@ -142,7 +124,11 @@ export default function ProductDetails() {
         </div>
         <div  className='d-flex justify-content-between py-3 align-items-center'>
           <button  onClick={()=>addProductToCart(data?.data.data._id)} className='btn btn-success w-75 addColorChange text-white'> + Add</button>
-          <button className='btn btnFocus'><i onClick={()=>checkList(data?.data.data._id)} className=" fa-solid fa-heart fa-2xl" style={{color : `${HeartColor}` }}></i></button>
+          <button className='btn btnFocus'>
+          <i onClick={()=>toggleWishlist(data?.data.data._id)}
+          className=" fa-solid fa-heart fa-2xl" 
+          style={{ color: isInWishlist ? "red" : "green" }}>
+            </i></button>
           </div>
     </div>
   </div> : ''}

@@ -82,7 +82,7 @@ export default function WishList() {
     <div className=' bg-body-tertiary rounded-5 w-75 h-50 d-flex justify-content-center align-items-center'>
       <h3 className=''>Oops something bad might happen please reload the page</h3>
     </div>
-  </div> : ""}
+  </div> : <>
   {isLoading?<div className='vh-100 d-flex justify-content-center align-items-center'>
     <Oval
 visible={true}
@@ -93,7 +93,7 @@ ariaLabel="oval-loading"
 wrapperStyle={{}}
 wrapperClass=""
   />
-  </div>: ""}
+  </div>: <>
   {wishlist && wishlist?.data?.length > 0? 
     <div className='mx-5'>
       {wishlist?.data.map((product)=>
@@ -123,6 +123,8 @@ wrapperClass=""
         <h4>Your wishlist is empty</h4>
         </div>
         }
+  </>}
+  </>}
     </div>
   </>
 }
