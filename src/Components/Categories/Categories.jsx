@@ -61,17 +61,6 @@ wrapperClass=""
     </div>
     )}
   </div>
-  {showSub? <ShowSubCategories key={SubID}  id={SubID} cate={CateName} /> :
-  <div className='vh-100 d-flex justify-content-center align-items-center'>
-  <Oval
-visible={true}
-height="100"
-width="100"
-color="#4fa94d"
-ariaLabel="oval-loading"
-wrapperStyle={{}}
-wrapperClass=""
-/>
-</div> }
+  {showSub? <ShowSubCategories key={SubID}  id={SubID} cate={CateName} /> :"" }
   </>
 }
