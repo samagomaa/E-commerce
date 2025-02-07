@@ -4,6 +4,7 @@ import { useQuery } from 'react-query'
 import axios from 'axios'
 import ShowSubCategories from '../ShowSubCategories/ShowSubCategories'
 import { Helmet } from 'react-helmet'
+import { Oval } from 'react-loader-spinner'
 
 export default function Categories() {
   let [showSub , setShowSub ] = useState(false)
@@ -20,7 +21,7 @@ export default function Categories() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
 }
 
-  let { data } = useQuery("CategoriesProducts" , allCategories )
+  let { data , isLoading , isError } = useQuery("CategoriesProducts" , allCategories )
 
 
   
@@ -29,6 +30,24 @@ export default function Categories() {
       <title>Categories</title>
   </Helmet>
   <div className="row g-5 py-5">
+  {isError? <div className='vh-100 d-flex justify-content-center align-items-center'>
+    <div className=' bg-body-tertiary rounded-5 w-75 h-50 d-flex justify-content-center align-items-center'>
+      <h3 className=''>Oops something bad might happen please reload the page</h3>
+    </div>
+  </div> : ""}
+  {isLoading?<div className='vh-100 d-flex justify-content-center align-items-center'>
+    <Oval
+visible={true}
+height="100"
+width="100"
+color="#4fa94d"
+ariaLabel="oval-loading"
+wrapperStyle={{}}
+wrapperClass=""
+  />
+  </div>
+  : ""  }
+  
     {data?.data.data.map((category)=> 
     <div key={category._id} className="col-md-4" onClick={()=>showSubCategory(category._id , category.name )}>
       <div className='border rounded addParent'>
@@ -42,6 +61,17 @@ export default function Categories() {
     </div>
     )}
   </div>
-  {showSub? <ShowSubCategories key={SubID}  id={SubID} cate={CateName} /> :console.log(" No subCategory") }
+  {showSub? <ShowSubCategories key={SubID}  id={SubID} cate={CateName} /> :
+  <div className='vh-100 d-flex justify-content-center align-items-center'>
+  <Oval
+visible={true}
+height="100"
+width="100"
+color="#4fa94d"
+ariaLabel="oval-loading"
+wrapperStyle={{}}
+wrapperClass=""
+/>
+</div> }
   </>
 }

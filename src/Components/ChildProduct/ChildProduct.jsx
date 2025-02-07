@@ -89,13 +89,13 @@ export default function ChildProduct(props) {
     <>
       {props?.productDetails ? (
         <div key={props.productDetails._id} className="col-md-3 col-sm-6">
-          <div className="addParent rounded">
+          <div className="addParent rounded bg-body">
             <Link to={`/productDetails/${props.productDetails._id}`}>
               <div className="container">
                 <img
                   src={props.productDetails.imageCover}
                   className="w-100"
-                  alt=""
+                  alt="product cover"
                 />
                 <p className="main-color">{props.productDetails.category.name}</p>
                 <h6 className="main-color">
@@ -112,7 +112,7 @@ export default function ChildProduct(props) {
                 </div>
               </div>
             </Link>
-            <div className="d-flex justify-content-between py-3 align-items-center">
+            <div className="d-flex justify-content-between py-4 align-items-center">
               <button
                 onClick={() => addProductToCart(props.productDetails._id)}
                 className="btn w-75 bg-success addHover text-white addColorChange"

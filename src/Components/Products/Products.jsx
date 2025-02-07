@@ -3,6 +3,7 @@ import './Products.module.css'
 import axios from 'axios'
 import ChildProduct from '../ChildProduct/ChildProduct'
 import { Oval } from  'react-loader-spinner'
+import { Helmet } from 'react-helmet'
 
 export default function Products() {
   const [ isloading , setisloading] = useState(false)
@@ -38,7 +39,8 @@ export default function Products() {
   }
 
   return<>
-  <div className=''>
+  <Helmet><title>products</title></Helmet>
+  <div>
   <input onChange={(e)=>handleChange(e.target.value)} type="text" className='form-control w-75 my-5 mx-auto' placeholder='search...' />
   <div className="row g-4 my-5">
     {iserror? <div className='vh-100 d-flex justify-content-center align-items-center'>

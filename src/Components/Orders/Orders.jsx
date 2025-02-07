@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Orders.module.css'
-// import { OrderContext } from '../../Context/OrderContext'
+import { OrderContext } from '../../Context/OrderContext'
 
 export default function Orders() {
-  // let {getUserOrders} = useContext(OrderContext)
+  let {getUserOrders} = useContext(OrderContext)
 
-  // async function showUserOrder() {
-  //   let response = await getUserOrders("652d666ad588ddacc6a608f9")
-  //   console.log(response?.data);
-  // }
+  async function showUserOrder() {
+    let response = await getUserOrders("652d666ad588ddacc6a608f9")
+    console.log(response?.data);
+  }
 
   return <>
   <div className='w-100 mx-auto my-5 py-4 bg-body-tertiary container'>

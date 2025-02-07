@@ -40,8 +40,8 @@ export default function Checkout() {
   <Helmet>
       <title>Checkout</title>
   </Helmet>
-  <div className="container py-4 w-75">
-  <form onSubmit={formik.handleSubmit} >
+  <div className="vh-100 my-5">
+  <form onSubmit={formik.handleSubmit} className='bg-light p-5 rounded-3' >
     <label htmlFor="details">Details</label>
     <input id='details' type="text" className='form-control mb-3' name='details' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.details} />
     {formik.errors.details && formik.touched.details ? <div className='alert alert-danger'>{formik.errors.details}</div> : ''}

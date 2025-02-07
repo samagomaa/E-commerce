@@ -11,7 +11,9 @@ export default function Navbar() {
   let  headers = { token: userToken} 
 
   async function getCart() {
-    return  axios.get(`https://ecommerce.routemisr.com/api/v1/cart` , {headers})
+    if(userToken){
+      return  axios.get(`https://ecommerce.routemisr.com/api/v1/cart` , {headers})
+    }
   }
   
   let {data} = useQuery("Countitems" , getCart )
